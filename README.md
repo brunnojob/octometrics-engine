@@ -15,6 +15,8 @@ pnpm install
 cp .env.example .env
 ```
 
+In Windows PowerShell, run `Copy-Item .env.example .env` instead. Keep `.env` in the project root, next to `package.json`.
+
 Create `.env` from `.env.example` and replace the example values:
 
 ```dotenv
