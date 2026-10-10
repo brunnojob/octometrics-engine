@@ -58,3 +58,11 @@ Import `checkPullRequest(owner, repo, pull_number)` from `dist/modules/automatio
 ## Webhook responses
 
 `POST /webhook` verifies `X-Hub-Signature-256` against the exact request bytes before parsing JSON. It returns `200` for valid closed or merged pull requests, `202` for other valid events, `400` for invalid payloads, `401` for a bad signature, and `415` for a non-JSON content type. Successful deliveries are logged with timestamp, delivery ID, repository, PR number, and outcome. Put the service behind HTTPS when exposing it publicly.
+
+## Co-authorship
+
+Contribution trailer:
+
+```text
+Co-authored-by: nyctophile <33561761+ineedfoundmyway@users.noreply.github.com>
+```
