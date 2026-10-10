@@ -5,17 +5,18 @@ Typed Node.js service for collecting GitHub account contributions and receiving 
 ## Prerequisites
 
 - Node.js 20 or newer
-- pnpm
+- npm (included with Node.js), or pnpm
 - A GitHub token with access to the repositories being measured (`read:user` and `repo` for classic tokens when private contributions are needed; equivalent read permissions for fine-grained tokens)
 
 ## Installation
 
 ```bash
-pnpm install
+npm install
 cp .env.example .env
 ```
 
 In Windows PowerShell, run `Copy-Item .env.example .env` instead. Keep `.env` in the project root, next to `package.json`.
+If you already have pnpm installed, you can use `pnpm install` instead of `npm install`.
 
 Create `.env` from `.env.example` and replace the example values:
 
@@ -38,13 +39,13 @@ Copy that value into `.env`. In the GitHub repository, open **Settings → Webho
 ## Build and run
 
 ```bash
-pnpm run typecheck
-pnpm run build
-pnpm run start:metrics
-pnpm run start:webhooks
+npm run typecheck
+npm run build
+npm run start:metrics
+npm run start:webhooks
 ```
 
-`start:metrics` and `start:webhooks` run the compiled files in `dist`. Build after changing source files. For local development without a build, use `pnpm run dev:metrics` or `pnpm run dev:webhooks`.
+`start:metrics` and `start:webhooks` run the compiled files in `dist`. Build after changing source files. For local development without a build, use `npm run dev:metrics` or `npm run dev:webhooks`. Every command in this section also works with `pnpm run` if pnpm is installed.
 
 ## Metrics schema
 
