@@ -1,0 +1,39 @@
+name: Executable proof
+on:
+  push:
+    paths-ignore:
+      - README.md
+      - docs/proof/**
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: proof-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  proof:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: npm ci
+      - name: Record executable proof
+        run: python .proof/record.py
+      - name: Upload execution evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: execution-proof
+          path: docs/proof/
+          if-no-files-found: error
+      - name: Publish proof summary
+        if: always()
+        run: python .proof/summary.py

@@ -66,3 +66,7 @@ Contribution trailer:
 ```text
 Co-authored-by: nyctophile <33561761+ineedfoundmyway@users.noreply.github.com>
 ```
+
+## Execution evidence
+
+`python .proof/record.py` builds the application and sends signed, unsigned and malformed HTTP requests to a real local Express server. It checks 200, 202, 400, 401 and 415 responses. A separate deterministic fixture checks language aggregation. This verifies webhook handling and metrics processing; it does not verify a deployed webhook endpoint or access to an authenticated GitHub GraphQL account.
